@@ -1,0 +1,141 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Employee{
+    private:
+        int id;
+        string name;
+        string department;
+        float salary;
+
+    public:
+
+        Employee(){
+            id = 0;
+            name = "";
+            department = "";
+            salary = 0.0;
+        }
+
+        Employee(int id, string name){
+            this->id = id;
+            this->name = name;
+            department = "";
+            salary = 0.0;
+        }
+
+        Employee(int id, string name, string department, float salary){
+            this->id = id;
+            this->name = name;
+            this->department = department;
+            this->salary = salary;
+        }
+
+        Employee(string name, int id, string department, float salary){
+            this->id = id;
+            this->name = name;
+            this->department = department;
+            this->salary = salary;
+        }
+
+        void calculatepay(){
+            cout<<"Employee ID: "<<id<<endl;
+            cout<<"Employee Name: "<<name<<endl;
+            cout<<"Employee Department: "<<department<<endl;
+            cout<<"Employee Salary: "<<salary<<endl;
+            cout<<"Total Pay: "<<salary<<endl;
+        }
+
+        void calculatepay(float bonus){
+            cout<<"Employee ID: "<<id<<endl;
+            cout<<"Employee Name: "<<name<<endl;
+            cout<<"Total Pay: "<<salary + bonus<<endl;
+        }
+
+        void calculatepay(float hours, float hourlyRate){
+            cout<<"Employee ID: "<<id<<endl;
+            cout<<"Employee Name: "<<name<<endl;
+            cout<<"Total Pay: "<<salary + (hours * hourlyRate)<<endl;
+        }
+
+        void calculatepay(float bonus, float taxPercentage, char tax){
+            float total = salary + bonus;
+            float deduction = total * taxPercentage / 100;
+            float finalPay = total - deduction;
+
+            cout<<"Employee ID: "<<id<<endl;
+            cout<<"Employee Name: "<<name<<endl;
+            cout<<"Total Pay: "<<finalPay<<endl;
+        }
+
+
+        void updateProfile(string newDepartment){
+            department = newDepartment;
+        }
+
+        void updateProfile(float newSalary){
+            salary = newSalary;
+        }
+
+        void updateProfile(string newDepartment, float newSalary){
+            department = newDepartment;
+            salary = newSalary;
+        }
+
+        void display(){
+            cout<<"Employee ID: "<<id<<endl;
+            cout<<"Employee Name: "<<name<<endl;
+            cout<<"Employee Department: "<<department<<endl;
+            cout<<"Employee Salary: "<<salary<<endl;
+            cout<<endl;
+        }
+};
+
+
+int main(){
+    Employee e1;
+
+    Employee e2(101, "Parag");
+
+    Employee e3(102, "Bhavya", "IT", 50000.0);
+
+    Employee e4("Alice", 103, "Marketing", 60000.0);
+
+
+    cout<<"Constructors"<<endl;
+
+    e1.display();
+    e2.display();
+    e3.display();
+    e4.display();
+
+
+    cout<<"Calculate Pay"<<endl;
+
+    e3.calculatepay();
+
+
+    e3.calculatepay(10000);
+
+
+    e3.calculatepay(10, 500);
+
+
+    e3.calculatepay(10000, 10, 'T');
+
+
+
+    cout<<endl<<"Update Profile"<<endl;
+
+
+    e3.updateProfile("HR");
+    e3.display();
+
+    e3.updateProfile(60000);
+    e3.display();
+
+    e3.updateProfile("Finance", 70000);
+    e3.display();
+
+    return 0;
+}
